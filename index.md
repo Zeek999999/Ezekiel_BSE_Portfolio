@@ -1,5 +1,6 @@
 <style>
   .image-container img{
+    width: 350px;
         margin-left: auto;
         margin-right: auto;｝
 </style>
