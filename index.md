@@ -6,8 +6,9 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 | Ezekiel G. | Regis High School | Mechanical engineering/robotics | Rising Sophomore
 
 <!-- **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.** -->
-
-![Headstone Image](20230619_165032.jpg)
+<div style="text-align: center;">
+<img src="20230619_165032.jpg" alt="image" height="650"/>
+</div>
   
 <!-- # Final Milestone
 For your final milestone, explain the outcome of your project. Key details to include are:
