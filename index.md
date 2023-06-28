@@ -17,7 +17,6 @@ For your final milestone, explain the outcome of your project. Key details to in
 - A summary of key topics you learned about
 - What you hope to learn in the future after everything you've learned at BSE
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
@@ -96,30 +95,145 @@ My first milestone was putting together the hardware for my mini-tank and gettin
 </div>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b3Cfg2a2Xgo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-# Schematics
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
+<!-- # Schematics
+Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. -->
 
-<!-- # Code
-Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
-
+ # Code
 ```c++
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
+int ledpin=10;
+#include <Servo.h>
+Servo Box_Lift_R;
+int Button_Pin = 1;
+int trigPin = 5;    // Trigger
+int echoPin = 4;    // Echo
+long duration, inches;
+int LED = 10;
+#define ML_Ctrl 13  //define the direction control pin of left motor
+#define ML_PWM 11   //define the PWM control pin of left motor
+#define MR_Ctrl 12  //define direction control pin of right motor
+#define MR_PWM 3   // define the PWM control pin of right motor
+char bluetooth_val; // save the value of Bluetooth reception
+
+void Car_front() {
+  digitalWrite(MR_Ctrl, HIGH);
+  analogWrite(MR_PWM, 200);
+  digitalWrite(ML_Ctrl, HIGH);
+  analogWrite(ML_PWM, 200);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-
+void Car_back() {
+  digitalWrite(MR_Ctrl, LOW);
+  analogWrite(MR_PWM, 200);
+  digitalWrite(ML_Ctrl, LOW);
+  analogWrite(ML_PWM, 200);
 }
+
+void Car_left() {
+  digitalWrite(MR_Ctrl, LOW);
+  analogWrite(MR_PWM, 255);
+  digitalWrite(ML_Ctrl, HIGH);
+  analogWrite(ML_PWM, 255);
+}
+
+void Car_right() {
+  digitalWrite(MR_Ctrl, HIGH);
+  analogWrite(MR_PWM, 255);
+  digitalWrite(ML_Ctrl, LOW);
+  analogWrite(ML_PWM, 255);
+}
+
+void Car_Stop() {
+  digitalWrite(MR_Ctrl, LOW);
+  analogWrite(MR_PWM, 0);
+  digitalWrite(ML_Ctrl, LOW);
+  analogWrite(ML_PWM, 0);
+}
+void setup()
+{Serial.begin(9600);
+pinMode(ML_Ctrl, OUTPUT);//define direction control pin of left motor as output
+  pinMode(ML_PWM, OUTPUT);//define PWM control pin of left motor as output
+  pinMode(MR_Ctrl, OUTPUT);//define direction control pin of right motor as output.
+  pinMode(MR_PWM, OUTPUT);//define the PWM control pin of right motor as output
+  Box_Lift_R.attach(9);
+pinMode(Button_Pin, INPUT);
+pinMode(trigPin, OUTPUT);
+pinMode(echoPin, INPUT);
+pinMode(LED, OUTPUT);
+Box_Lift_R.write(0);
+}
+void loop()
+{ int i;
+  if (Serial.available())
+  {i=Serial.read();
+    Serial.println("DATA RECEIVED:");
+    if(i=='f')
+    { digitalWrite(ML_Ctrl, HIGH);
+  analogWrite(ML_PWM, 250);
+    digitalWrite(MR_Ctrl, HIGH);
+    analogWrite(MR_PWM, 250);
+    delay(3500);
+analogWrite(ML_PWM, 0);
+analogWrite(MR_PWM, 0);
+    }
+    if(i=='b')
+    { digitalWrite(ML_Ctrl, LOW);
+    analogWrite(ML_PWM, 250);
+digitalWrite(MR_Ctrl, LOW);
+analogWrite(MR_PWM, 250);
+delay(1500);
+analogWrite(ML_PWM, 0);
+analogWrite(MR_PWM, 0);
+    }
+if(i=='l')
+    { digitalWrite(ML_Ctrl, HIGH);
+    analogWrite(ML_PWM, 250);
+digitalWrite(MR_Ctrl, LOW);
+analogWrite(MR_PWM, 250);
+delay(100);
+analogWrite(ML_PWM, 0);
+analogWrite(MR_PWM, 0);
+    }
+if(i=='r')
+    { digitalWrite(ML_Ctrl, LOW);
+    analogWrite(ML_PWM, 250);
+digitalWrite(MR_Ctrl, HIGH);
+analogWrite(MR_PWM, 250);
+delay(100);
+analogWrite(ML_PWM, 0);
+analogWrite(MR_PWM, 0);
+if(i=='fs'){
+  digitalWrite(ML_Ctrl, HIGH);
+  analogWrite(ML_PWM, 250);
+    digitalWrite(MR_Ctrl, HIGH);
+    analogWrite(MR_PWM, 250);
+    delay(1500);
+analogWrite(ML_PWM, 0);
+analogWrite(MR_PWM, 0);
+}
+}}
+ digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  // Read the signal from the sensor: a HIGH pulse whose
+  // duration is the time (in microseconds) from the sending
+  // of the ping to the reception of its echo off of an object.
+  duration = pulseIn(echoPin, HIGH);
+  inches = (duration/2) / 74;   // Divide by 74 or multiply by 0.0135
+if(inches <= 7.5){
+ delay(2000);
+  Box_Lift_R.write(90);
+  digitalWrite(LED, HIGH);
+  }
+if(digitalRead(Button_Pin) == LOW){
+  Box_Lift_R.write(0);
+  digitalWrite(LED, LOW);
+  delay(1500);
+}}//*******************************************
 ```
--->
 
 # Bill of Materials
-Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
-Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
-
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
 | 2101 Series Stainless Steel D-Shaft (6mm Diameter, 260mm Length) | Used as an axle for each pair of wheels | $12.78 | <a href="https://www.gobilda.com/2101-series-stainless-steel-d-shaft-6mm-diameter-260mm-length/"> GoBilda </a> |
