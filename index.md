@@ -116,8 +116,7 @@ int LED = 10;
 #define ML_PWM 11   //define the PWM control pin of left motor
 #define MR_Ctrl 12  //define direction control pin of right motor
 #define MR_PWM 3   // define the PWM control pin of right motor
-char bluetooth_val; // save the value of Bluetooth reception
-
+char bluetooth_val;
 void Car_front() {
   digitalWrite(MR_Ctrl, HIGH);
   analogWrite(MR_PWM, 200);
@@ -166,7 +165,28 @@ pinMode(LED, OUTPUT);
 Box_Lift_R.write(0);
 }
 void loop()
-{ int i;
+{if (Serial.available()) {
+    bluetooth_val = Serial.read();
+    Serial.println(bluetooth_val);
+    switch (bluetooth_val) {
+      case 'F':  // forward command
+        Car_front();
+        break;
+      case 'B':  // back command
+        Car_back();
+        break;
+      case 'L':  // left-turning instruction
+        Car_left();
+        break;
+      case 'R':  // right-turning instruction
+        Car_right();
+        break;
+      case 'S':  // stop command
+        Car_Stop();
+        break;
+    }
+  }
+int i;
   if (Serial.available())
   {i=Serial.read();
     Serial.println("DATA RECEIVED:");
@@ -210,7 +230,7 @@ if(i=='fs'){
   analogWrite(ML_PWM, 250);
     digitalWrite(MR_Ctrl, HIGH);
     analogWrite(MR_PWM, 250);
-    delay(1500);
+    delay(500);
 analogWrite(ML_PWM, 0);
 analogWrite(MR_PWM, 0);
 }
@@ -225,7 +245,7 @@ analogWrite(MR_PWM, 0);
   // of the ping to the reception of its echo off of an object.
   duration = pulseIn(echoPin, HIGH);
   inches = (duration/2) / 74;   // Divide by 74 or multiply by 0.0135
-if(inches <= 7.5){
+if(inches <= 7){
  delay(2000);
   Box_Lift_R.write(90);
   digitalWrite(LED, HIGH);
