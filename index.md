@@ -22,11 +22,11 @@ For your final milestone, explain the outcome of your project. Key details to in
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
 # Second Milestone
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
+<!--For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 - Technical details of what you've accomplished and how they contribute to the final goal
 - What has been surprising about the project so far
 - Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone 
+- What needs to be completed before your final milestone -->
 My second milestone was three-pronged, involving different methods of wireless manual control. I utilized the IR remote included in the robot kit to send signals to the mini-tank's IR reciever, controlling its motors manually from a distance. This method of control, however, has its drawbacks as the reciever requires direct line of sight with the robot to recieve its signals. Further, the distance drop-off in IR signal recievability is immense, meaning that controlling the mini-tank from a distance of just 7 feet while it is facing away from the remote is nearly impossible. A way to get around this issue is with the included bluetooth module, which enables bluetooth control at a range of about 30 feet depending on obstructions.
 ```c++
   if (irrecv.decode(&results)) {
@@ -43,7 +43,7 @@ if(results.value==0xFF629D) {
  irrecv.resume(); //receive the next value
 }
 ```
-<p>The code for receiving and acting on the IR signal for moving forward, this prototype stopping after a few seconds of moving</p>
+The code for receiving and acting on the IR signal for moving forward, this prototype stopping after a few seconds of moving
 
 ```c++
 if (irrecv.decode(&results)) {
@@ -56,9 +56,36 @@ if(results.value==0xFF629D) {
  irrecv.resume(); //receive the next value
 }
 ```
-<p>I eventually edited it to continuosly move forward until interrupted by another signal</p>
+I eventually edited it to continuosly move forward until interrupted by another signal
+  The most effective way to set up bluetooth control is with the application that Keyestudio developed, Keyes BT Car. Unfortunately, this application is not availabe for Android, the operating system that my phone uses, so I had to find a work-around. Previous instructions in the documentation displayed how to send bluetooth signals from an application called BLE Scanner to the tank's bluetooth module for the purpose of turning an LED on and off, I simply used this method to operate the motors instead, using the signals f, b, l, and r for forward, backward, left, and right respectively. Sending signals via this application is fairly quick, although the turn distance for each signal sent needs to be very short to accomadate minor turns. This method of control is much better than the IR remote, but it still has some inconveniences. However, after I temporarily acquired an iPhone, I downloaded Keyes BT Car and was able to fully control the mini-tank's movements using a controller-like setup. The robot moves in the direction corresponding to the button pressed while it is pressed down and stops as soon as the button is no longer in its pressed state, permitting the tank to make very minor movements easily.
+  
+```c++
+   if (Serial.available())
+  {i=Serial.read();
+    Serial.println("DATA RECEIVED:");
+    if(i=='f')
+    { digitalWrite(ML_Ctrl, HIGH);
+  analogWrite(ML_PWM, 250);
+    digitalWrite(MR_Ctrl, HIGH);
+    analogWrite(MR_PWM, 250);
+    delay(3500);
+analogWrite(ML_PWM, 0);
+analogWrite(MR_PWM, 0);
+    }}
+```
+    <p>A snippet of code for moving forward on one-letter-signal bluetooth control...</p>
+```c++
+    if (Serial.available()) {
+    bluetooth_val = Serial.read();
+    Serial.println(bluetooth_val);
+    switch (bluetooth_val) {
+      case 'F':  // forward command
+        Car_front();
+        break;
+ ```
 
-  The most effective way to set up bluetooth control is with the application that Keyestudio developed, Keyes BT Car. Unfortunately, this application is not availabe for Android, the operating system that my phone uses, so I was required to find a work-around. Previous instructions in the documentation displayed how to send bluetooth signals from an application called BLE Scanner to the tank's bluetooth module for the purpose of turning an LED on and off, I simply used this method to operate the motors instead, using the signals f, b, l, and r for forward, backward, left, and right respectively. Sending signals via this application is fairly quick, although the turn distance for each signal sent needs to be very short to accomadate minor turns. This method of control is much better than the IR remote, but it still has some inconveniences. However, after I temporarily acquired an iPhone, I downloaded Keyes BT Car and was able to fully control the mini-tank's movements using a controller-like setup. The robot goes forward while the forward button is pressed down and stops as soon as the button is no longer in its pressed state, permitting the tank to make very minor movements easily.
+    <p> ...Vs moving forward on full bluetooth app control (Car_front is a function specified earlier in the code) </p>
+    
    Wireless control of the robot is a major accomplishment because it allows a user to maneuver through a store and adapt to different situations, going a long way towards the ultimate goal of remote shopping. [What was surprising about my project?] In the previous milestone I was forced to remove the bottom plate of the tank due to the lack of m4 nuts, since then I was able to acquire those nuts and reattach it. Before my final milestone, I must have a trailer with a top that that opens and closes with servos in response to objects being placed inside of it. Some other things that would be very helpful towards my final milestone are a camera that enables users to use the robot from afar and an obstacle avoidance system that allows the robot to drive autonomously.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bWixDkv1DTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -66,7 +93,6 @@ if(results.value==0xFF629D) {
 My first milestone was putting together the hardware for my mini-tank and getting its motors to drive the treads. I did this by using the motor shield's screw hubs to set up tank steering with the motors. I've also used the top sensor shield to wire the sensor's servo so that it could be moved. These components are all connected to the Arduino micro-controller which functions as a sort of brain for the robot. There were, however, some hardware issues that slowed my progress. The tank treads were uneven due to one of the plates being angled upwards, requiring me to take apart the chassis to readjust the nuts that keep the brackets in place. This process, while providing extra security, used up the nuts required to keep the bottom plate in place. Additionally, I assumed that the sensor's platform turned 360 degrees, leading me to accidentally break it while moving it out of the way in order to tighten some screws. Once these hardware issues were solved, I had to install a driver for the UART chip on the mini-tank's arduino so that I could upload code to it. For my second milestone I will set up wireless control of the robot's movements and for my final milestone I plan to build a self-closing trailer for my robot to pull behind it.
 <div style="text-align: center;">
 <img src="Tank_Milestone1.jpg" alt="Image" height="300"/>
-The Tank
 </div>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b3Cfg2a2Xgo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
