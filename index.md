@@ -95,8 +95,11 @@ My first milestone was putting together the hardware for my mini-tank and gettin
 </div>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b3Cfg2a2Xgo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<!-- # Schematics
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. -->
+# Schematics
+<div style="text-align: center;">
+<img src="Shopping Robot Trailer (1).pdf
+" alt="Image" height="400"/>
+</div>
 
  # Code
 ```c++
