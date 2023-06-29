@@ -32,6 +32,12 @@ The tank towing a prototype trailer
 The trailer after being augmented and painted to look like a minecraft chest
 
  Throughout my time at BlueStamp Engineering I’ve learned more about the arduino language, specifically with how it relates to motors, ultrasonic sensors, and photoresistors. More generally, I’ve gained a deeper understanding of the documentation, design, and testing that’s part of the engineering process. My project has had many issues and damaged hardware, it’s through this that I learned that these things are inevitable in engineering, but all contribute to learning. After the program is finished, I hope to learn more about mechanical engineering and computer science so that I can go more into the field of robotics.
+20230629_130823.jpg
+<div style="text-align: center;">
+<img src="20230629_130823.jpg" alt="Image" height="300"/>
+</div>
+The final* product
+
 
 <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
