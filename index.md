@@ -26,6 +26,10 @@ The tank towing a prototype trailer
 
 
   After the setup was completed I wanted the trailer to look like a double chest from Minecraft, so I covered the box with paper from brown paper bags and cardboard, spraying it with paint afterwards as the finishing touch. During late testing I encountered some more software issues, notably that the code for bluetooth contained the code for the box opening, although there were some more issues with bracket placement. I fixed these software issues by testing out the robot’s functions one-by-one and how the code worked affected it.
+<div style="text-align: center;">
+<img src="20230629_090359.jpg" alt="Image" height="300"/>
+</div>
+The trailer after being augmented and painted to look like a minecraft chest
 
  Throughout my time at BlueStamp Engineering I’ve learned more about the arduino language, specifically with how it relates to motors, ultrasonic sensors, and photoresistors. More generally, I’ve gained a deeper understanding of the documentation, design, and testing that’s part of the engineering process. My project has had many issues and damaged hardware, it’s through this that I learned that these things are inevitable in engineering, but all contribute to learning. After the program is finished, I hope to learn more about mechanical engineering and computer science so that I can go more into the field of robotics.
 
