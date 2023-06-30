@@ -9,12 +9,12 @@
 <div style="text-align: center;">
 <img src="20230619_165032.jpg" alt="image" height="650"/>
 </div>
-  
- # Final Milestone
+
+# Final Milestone
   My final milestone was adding a trailer that is pulled by the mini-tank and closes in response to an object being placed inside of it. The process started when I simulated the ultrasonic sensor and servo of the box with those of the mini-tank, writing code that used these components as if part of the box so I could start working on it before the parts arrived in the mail.
 
   While testing the code for the trailer, I noticed that the code would only work while connected to my laptop via usb, this was because I had accidentally short-circuited the Arduino by running a voltage wire through the signal pin of the button to open the box. This short-circuit damaged the Arduino's voltage regulator that provided the Arduino with the necessary 5 volts by controlling the voltage input from the exterior power source (the mini-tank's battery pack), these 5 volts are continuously provided when plugged into the usb port of a computer, explaining why it worked when plugged into my laptop but not while running on power from the battery pack. Unfortunately this also meant that the Arduino I had been using was no longer viable, requiring me to replace it with the Arduino from my personal kit. Further, one of the axles for the trailer did not arrive, meaning I could only install one pair of wheels (which may have been significantly better for turning than two sets of rigid wheels). After this ordeal and some tinkering with the box, I had a fully functional trailer. I adapted to having only one set of wheels by tightening the cables attaching the mini-tank to the trailer so that the front of the trailer was not dragging on the floor.
-  <div style="text-align: center;">
+<div style="text-align: center;">
 <img src=" 20230627_230044.jpg" alt="Image" height="300"/>
 </div>
 
@@ -25,13 +25,15 @@ The tank towing a prototype trailer
 <div style="text-align: center;">
 <img src="20230629_090359.jpg" alt="Image" height="300"/>
 </div>
+
 The trailer after being augmented and painted to look like a minecraft chest
 
+
  Throughout my time at BlueStamp Engineering I’ve learned more about the arduino language, specifically with how it relates to motors, ultrasonic sensors, and photoresistors. More generally, I’ve gained a deeper understanding of the documentation, design, and testing that’s part of the engineering process. My project has had many issues and damaged hardware, it’s through this that I learned that these things are inevitable in engineering, but all contribute to learning. After the program is finished, I hope to learn more about mechanical engineering and computer science so that I can go more into the field of robotics.
-20230629_130823.jpg
 <div style="text-align: center;">
 <img src="20230629_130823.jpg" alt="Image" height="300"/>
 </div>
+
 The final* product
 
 
@@ -72,7 +74,10 @@ if(results.value==0xFF629D) {
  irrecv.resume(); //receive the next value
 }
 ```
+
 I eventually edited it to continuosly move forward until interrupted by another signal
+
+
   The most effective way to set up bluetooth control is with the application that Keyestudio developed, Keyes BT Car. Unfortunately, this application is not availabe for Android, the operating system that my phone uses, so I had to find a work-around. Previous instructions in the documentation displayed how to send bluetooth signals from an application called BLE Scanner to the tank's bluetooth module for the purpose of turning an LED on and off, I simply used this method to operate the motors instead, using the signals f, b, l, and r for forward, backward, left, and right respectively. Sending signals via this application is fairly quick, although the turn distance for each signal sent needs to be very short to accomadate minor turns. This method of control is much better than the IR remote, but it still has some inconveniences. However, after I temporarily acquired an iPhone, I downloaded Keyes BT Car and was able to fully control the mini-tank's movements using a controller-like setup. The robot moves in the direction corresponding to the button pressed while it is pressed down and stops as soon as the button is no longer in its pressed state, permitting the tank to make very minor movements easily.
   
 ```c++
@@ -89,7 +94,10 @@ analogWrite(ML_PWM, 0);
 analogWrite(MR_PWM, 0);
     }}
 ```
-    <p>A snippet of code for moving forward on one-letter-signal bluetooth control...</p>
+
+A snippet of code for moving forward on one-letter-signal bluetooth control...
+
+
 ```c++
     if (Serial.available()) {
     bluetooth_val = Serial.read();
@@ -100,7 +108,8 @@ analogWrite(MR_PWM, 0);
         break;
  ```
 
-    <p> ...Vs moving forward on full bluetooth app control (Car_front is a function specified earlier in the code) </p>
+ ...Vs moving forward on full bluetooth app control (Car_front is a function specified earlier in the code) </p>
+ 
     
    Wireless control of the robot is a major accomplishment because it allows a user to maneuver through a store and adapt to different situations, going a long way towards the ultimate goal of remote shopping. In the previous milestone I was forced to remove the bottom plate of the tank due to the lack of m4 nuts, since then I was able to acquire those nuts and reattach it. Before my final milestone, I must have a trailer with a top that that opens and closes with servos in response to objects being placed inside of it. Some other things that would be very helpful towards my final milestone are a camera that enables users to use the robot from afar and an obstacle avoidance system that allows the robot to drive autonomously.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bWixDkv1DTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -114,8 +123,7 @@ My first milestone was putting together the hardware for my mini-tank and gettin
 
 # Schematics
 <div style="text-align: center;">
-<img src="Shopping Robot Trailer (1).pdf
-" alt="Image" height="400"/>
+<img src="" alt="Image" height="400"/>
 </div>
 
  # Code
@@ -274,6 +282,7 @@ if(digitalRead(Button_Pin) == LOW){
 ```
 
 # Bill of Materials
+
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
 | 2101 Series Stainless Steel D-Shaft (6mm Diameter, 260mm Length) | Used as an axle for each pair of wheels | $12.78 | <a href="https://www.gobilda.com/2101-series-stainless-steel-d-shaft-6mm-diameter-260mm-length/"> GoBilda </a> |
@@ -286,10 +295,5 @@ if(digitalRead(Button_Pin) == LOW){
 | 4Pcs SG90 9g Micro Servos for RC Robot Helicopter Airplane Controls Car Boat | Used to open and close the box's lid | $9.16 | <a href="https://www.amazon.com/Micro-Servos-Helicopter-Airplane-Controls/dp/B07MLR1498/ref=sr_1_2?crid=26LBJDE7S5KN1&keywords=servo&qid=1687457909&sprefix=servo%2Caps%2C127&sr=8-2&th=1"> Amazon </a> |
 | Cardboard Nike® shoe box | Used as the chassis of the trailer | N/A | N/A |
 
-<!-- # Other Resources/Examples
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
-- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
-
-To watch the BSE tutorial on how to create a portfolio, click here. -->
+# Other Resources/Examples
+- [Documentation/instructions] (https://wiki.keyestudio.com/Ks0428_keyestudio_Mini_Tank_Robot_V2#Introduction)
