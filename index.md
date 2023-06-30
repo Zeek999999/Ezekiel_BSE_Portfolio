@@ -7,7 +7,7 @@ This rover is designed to carry out unmanned missions to the grocery store, comp
 
  
 <div style="text-align: center;">
-<img src="WIN_20230630_12_05_20_Pro.jpg" alt="image" height="650"/>
+<img src="WIN_20230630_12_05_20_Pro.jpg" alt="image" height="550"/>
 </div>
 
 # Final Milestone
@@ -37,7 +37,7 @@ The trailer after being augmented and painted to look like a minecraft chest
 The final* product
 
 
-<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/27TvYPs7Xvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Second Milestone
 <!--For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
