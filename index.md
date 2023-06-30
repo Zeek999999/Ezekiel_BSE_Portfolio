@@ -123,7 +123,7 @@ My first milestone was putting together the hardware for my mini-tank and gettin
 
 # Schematics
 <div style="text-align: center;">
-<img src="" alt="Image" height="400"/>
+<img src="Shopping Robot Trailer_4.jpg" alt="Image" height="600"/>
 </div>
 
  # Code
