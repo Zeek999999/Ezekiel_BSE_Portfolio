@@ -5,9 +5,9 @@
 |:--:|:--:|:--:|:--:|
 | Ezekiel G. | Regis High School | Mechanical engineering/robotics | Rising Sophomore
 
-<!-- **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.** -->
+ 
 <div style="text-align: center;">
-<img src="20230619_165032.jpg" alt="image" height="650"/>
+<img src="WIN_20230630_12_05_20_Pro.jpg" alt="image" height="650"/>
 </div>
 
 # Final Milestone
