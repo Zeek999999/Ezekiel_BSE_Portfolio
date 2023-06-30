@@ -126,7 +126,8 @@ My first milestone was putting together the hardware for my mini-tank and gettin
 <img src="Shopping Robot Trailer_4.jpg" alt="Image" height="600"/>
 </div>
 
- # Code
+# Code
+ 
 ```c++
 int ledpin=10;
 #include <Servo.h>
@@ -296,4 +297,5 @@ if(digitalRead(Button_Pin) == LOW){
 | Cardboard Nike® shoe box | Used as the chassis of the trailer | N/A | N/A |
 
 # Other Resources/Examples
-- [Documentation/instructions] (https://wiki.keyestudio.com/Ks0428_keyestudio_Mini_Tank_Robot_V2#Introduction)
+
+[Documentation/instructions](https://wiki.keyestudio.com/Ks0428_keyestudio_Mini_Tank_Robot_V2#Introduction)
