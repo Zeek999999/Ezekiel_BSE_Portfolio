@@ -1,5 +1,5 @@
 # Shopping Rover
-This rover is designed to carry out unmanned missions to the grocery store, complete with bluetooth control from about 30 feet away and a trailer that closes when products like bags of chips or candy bars are placed inside of it.
+This rover is designed to carry out unmanned missions to the grocery store, complete IR control, bluetooth control from about 30 feet away, and a trailer that closes when products like bags of chips or candy bars are placed inside of it.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
