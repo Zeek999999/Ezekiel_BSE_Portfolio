@@ -187,10 +187,13 @@ pinMode(Button_Pin, INPUT);
 pinMode(trigPin, OUTPUT);
 pinMode(echoPin, INPUT);
 pinMode(LED, OUTPUT);
-Box_Lift_R.write(0);
+Box_Lift_R.write(90);
 }
 void loop()
-{if (Serial.available()) {
+{int i;
+  if (Serial.available())
+  {i=Serial.read();
+    Serial.println("DATA RECEIVED:");
     bluetooth_val = Serial.read();
     Serial.println(bluetooth_val);
     switch (bluetooth_val) {
@@ -208,19 +211,13 @@ void loop()
         break;
       case 'S':  // stop command
         Car_Stop();
-        break;
-    }
-  }
-int i;
-  if (Serial.available())
-  {i=Serial.read();
-    Serial.println("DATA RECEIVED:");
+        break;}
     if(i=='f')
     { digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 250);
     digitalWrite(MR_Ctrl, HIGH);
     analogWrite(MR_PWM, 250);
-    delay(3500);
+    delay(500);
 analogWrite(ML_PWM, 0);
 analogWrite(MR_PWM, 0);
     }
@@ -250,6 +247,7 @@ analogWrite(MR_PWM, 250);
 delay(100);
 analogWrite(ML_PWM, 0);
 analogWrite(MR_PWM, 0);
+}
 if(i=='fs'){
   digitalWrite(ML_Ctrl, HIGH);
   analogWrite(ML_PWM, 250);
@@ -259,7 +257,6 @@ if(i=='fs'){
 analogWrite(ML_PWM, 0);
 analogWrite(MR_PWM, 0);
 }
-}}
  digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
@@ -279,7 +276,7 @@ if(digitalRead(Button_Pin) == LOW){
   Box_Lift_R.write(0);
   digitalWrite(LED, LOW);
   delay(1500);
-}}//*******************************************
+}}}//*******************************************
 ```
 
 # Bill of Materials
